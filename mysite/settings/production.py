@@ -30,9 +30,8 @@ MIDDLEWARE.insert(
 )
 
 STORAGES["staticfiles"]["BACKEND"] = (
-    "whitenoise.storage.CompressedStaticFilesStorage"
+    "django.contrib.staticfiles.storage.StaticFilesStorage"
 )
-
 try:
     from .local import *
 except ImportError:
