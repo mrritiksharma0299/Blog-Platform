@@ -30,7 +30,7 @@ MIDDLEWARE.insert(
 )
 
 STORAGES["staticfiles"]["BACKEND"] = (
-    "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    "whitenoise.storage.CompressedStaticFilesStorage"
 )
 
 try:
