@@ -98,7 +98,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'profile' %}">
-                        {% if user.profile.profile_image %}
+                        {% if user.profile.profile_image and user.profile.profile_image.name %}
 
                         <img 
                             src="{{ user.profile.profile_image.url }}"
