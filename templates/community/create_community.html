@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Create Community
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="container py-5">
+
+
+<h1>
+    🌎 Create Your Community
+</h1>
+
+
+<form method="post" enctype="multipart/form-data">
+
+
+{% csrf_token %}
+
+
+{{ form.as_p }}
+
+
+
+<button class="btn btn-dark">
+
+Create Community
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+{% endblock %}

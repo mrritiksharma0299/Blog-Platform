@@ -1,0 +1,26 @@
+.footer-page {
+
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+
+    background: white;
+    border-radius: 15px;
+
+}
+
+
+.footer-page h1 {
+
+    margin-bottom: 20px;
+
+}
+
+
+.footer-page p {
+
+    line-height: 1.8;
+
+    color: #555;
+
+}

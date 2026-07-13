@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}
+Search
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="mb-4">
+        🔍 Search Results
+    </h1>
+
+    {% if query %}
+
+        <p class="text-muted mb-5">
+            Showing results for <strong>"{{ query }}"</strong>
+        </p>
+
+    {% else %}
+
+        <div class="alert alert-info">
+            Type something to search.
+        </div>
+
+    {% endif %}
+
+    <!-- USERS -->
+
+    {% if users %}
+
+        <h3 class="mb-3">
+            👤 Users
+        </h3>
+
+        <div class="row mb-5">
+
+            {% for user in users %}
+
+            <div class="col-md-4 mb-3">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h5>{{ user.username }}</h5>
+
+                        <a href="{% url 'public_profile' user.username %}"
+                           class="btn btn-dark btn-sm mt-2">
+
+                            View Profile
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+    <!-- BLOGS -->
+
+    {% if posts %}
+
+        <h3 class="mb-3">
+            📝 Blogs
+        </h3>
+
+        <div class="row mb-5">
+
+            {% for post in posts %}
+
+            <div class="col-md-4 mb-4">
+
+                <div class="card shadow-sm h-100">
+
+                    {% if post.featured_image %}
+
+                    <img
+                        src="{{ post.featured_image.url }}"
+                        class="card-img-top"
+                        style="height:220px;object-fit:cover;">
+
+                    {% endif %}
+
+                    <div class="card-body">
+
+                        <h5>{{ post.title }}</h5>
+
+                        <p class="text-muted">
+                            {{ post.author.username }}
+                        </p>
+
+                        <a href="{{ post.get_absolute_url }}"
+                           class="btn btn-primary">
+
+                            Read Blog
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+    <!-- CATEGORIES -->
+
+    {% if categories %}
+
+        <h3 class="mb-3">
+            📂 Categories
+        </h3>
+
+        <div class="mb-5">
+
+            {% for category in categories %}
+
+                <a href="{% url 'category_detail' category %}"
+                   class="btn btn-outline-dark m-2">
+
+                    {{ category }}
+
+                </a>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+    {% if not users and not posts and not categories and query %}
+
+        <div class="text-center py-5">
+
+            <h2>
+                😔 No Results Found
+            </h2>
+
+            <p class="text-muted">
+
+                Try searching with another keyword.
+
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

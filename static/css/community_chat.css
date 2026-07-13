@@ -1,0 +1,31 @@
+.chat-box{
+
+    height:500px;
+
+    overflow-y:auto;
+
+    background:#f8f9fa;
+
+    padding:20px;
+
+    border-radius:12px;
+
+    margin-bottom:20px;
+
+    border:1px solid #ddd;
+
+}
+
+.chat-box::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.chat-box::-webkit-scrollbar-thumb{
+
+    background:#bbb;
+
+    border-radius:20px;
+
+}

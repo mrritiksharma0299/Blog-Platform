@@ -1,0 +1,157 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="/">
+            WorldThread
+        </a>
+
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+            <div class="collapse navbar-collapse" id="navbar">
+
+                <form
+                    class="d-flex mx-auto"
+                    method="GET"
+                    action="{% url 'search' %}">
+
+                    <input
+                        class="form-control me-2 search-box"
+                        type="search"
+                        name="q"
+                        placeholder="Search users, blogs, categories..."
+                        value="{{ request.GET.q }}">
+
+                    <button
+                        class="btn btn-outline-light"
+                        type="submit">
+
+                        <i class="bi bi-search"></i>
+
+                    </button>
+
+                </form>
+
+                <ul class="navbar-nav ms-auto">
+
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog_list' %}">
+                        Blogs
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'category_list' %}">
+                        Categories
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'community_list' %}">
+                        Community
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create_blog' %}">
+                        Create Blog
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link position-relative" href="{% url 'notification_list' %}">
+
+                        <i class="bi bi-bell-fill notification-icon"></i>
+
+                        {% if unread_notifications_count > 0 %}
+
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+
+                            {{ unread_notifications_count }}
+
+                        </span>
+
+                        {% endif %}
+
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">
+                        Logout
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">
+                        {% if user.profile.profile_image %}
+
+                        <img 
+                            src="{{ user.profile.profile_image.url }}"
+                            class="nav-profile-image"
+                            alt="Profile"
+                        >
+
+                        {% else %}
+
+                        <i class="bi bi-person-circle profile-icon"></i>
+
+                        {% endif %}
+                    </a>
+                </li>
+
+
+                {% else %}
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog_list' %}">
+                        Blogs
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'category_list' %}">
+                        Categories
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">
+                        Login
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">
+                        Register
+                    </a>
+                </li>
+
+
+                {% endif %}
+
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>

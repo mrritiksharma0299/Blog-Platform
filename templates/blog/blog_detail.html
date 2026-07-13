@@ -1,0 +1,362 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ post.title }}
+{% endblock %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/blog_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% if post.featured_image %}
+<div class="hero-image-wrapper">
+
+    <img src="{{ post.featured_image.url }}"
+         class="hero-image"
+         alt="{{ post.title }}">
+
+    <div class="hero-overlay">
+
+        <h1>{{ post.title }}</h1>
+
+        <div class="blog-meta">
+
+            <!-- <span>{{ post.country.flag }} {{ post.country.name }}</span> -->
+            
+            <span>
+                <img
+                    src="{{ post.country.flag }}"
+                    alt="{{ post.country.name }}"
+                    width="24"
+                    height="18"
+                    style="vertical-align:middle; margin-right:6px;">
+
+                {{ post.country.name }}
+            </span>
+
+                                   
+
+            <span>📂 {{ post.category }}</span>
+
+            <span>✍️ {{ post.author.username }}</span>
+
+            <span>📅 {{ post.created_at|date:"F d, Y" }}</span>
+
+        </div>
+
+    </div>
+
+</div>
+{% endif %}
+
+<div class="container blog-content-container">
+
+    <div class="blog-content">
+
+        {{ post.content|linebreaks }}
+
+    </div>
+
+    <hr>
+
+    <div class="blog-actions">
+
+        {% if user.is_authenticated %}
+
+            <button
+                id="likeButton"
+                class="action-btn {% if liked %}liked{% endif %}">
+
+                ❤️
+
+                <span id="likeCount">
+
+                    {{ post.total_likes }}
+
+                </span>
+
+            </button>
+
+            {% else %}
+
+            <button
+                class="action-btn {% if liked %}liked{% endif %}"
+                onclick="loginRequired()">
+
+                ❤️ {{ post.total_likes }}
+
+            </button>
+
+        {% endif %}
+
+        {% if user.is_authenticated %}
+
+            <button class="action-btn">
+                💬 <span id="commentCount">{{ post.total_comments }}</span>
+            </button>
+
+            {% else %}
+
+            <button
+                class="action-btn"
+                onclick="loginRequired()">
+
+                💬 <span id="commentCount">{{ post.total_comments }}</span>
+
+            </button>
+
+        {% endif %}
+
+            <button
+                id="shareButton"
+                class="action-btn">
+
+                🔗 <span id="shareText">Share</span>
+
+            </button>
+
+    </div>
+
+    <div class="author-card">
+
+            {% if post.author.profile.profile_image %}
+
+                <img
+                    src="{{ post.author.profile.profile_image.url }}"
+                    class="author-avatar"
+                    alt="{{ post.author.username }}"
+                >
+
+            {% else %}
+
+                <div class="author-avatar">
+                    {{ post.author.username|first|upper }}
+                </div>
+
+            {% endif %}
+
+
+            <div>
+
+                <a href="{% url 'public_profile' post.author.username %}">
+                    <h4>{{ post.author.username }}</h4>
+                </a>
+
+                <p>
+                    Author on WorldThread
+                </p>
+
+            </div>
+
+        </div>
+
+
+    <hr class="my-5">
+
+    <div class="comments-section">
+
+        <h3 class="mb-4">
+            💬 Comments (<span id="commentHeading">{{ post.total_comments }}</span>)
+        </h3>
+
+        {% if user.is_authenticated %}
+
+            <form method="POST" class="mb-5">
+
+                {% csrf_token %}
+
+                {{ form.text }}
+
+                <button
+                    type="submit"
+                    class="btn btn-primary mt-3">
+
+                    Post Comment
+
+                </button>
+
+            </form>
+
+        {% else %}
+
+            <div class="alert alert-warning">
+
+                Please login to write a comment.
+
+                <br><br>
+
+                <a href="{% url 'login' %}" class="btn btn-dark">
+
+                    Login
+
+                </a>
+
+            </div>
+
+        {% endif %}
+
+        {% for comment in comments %}
+
+            <div class="comment-card">
+
+                <div class="comment-avatar">
+
+                    {{ comment.user.username|first|upper }}
+
+                </div>
+
+                <div class="comment-content">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <strong>{{ comment.user.username }}</strong>
+
+                    <small class="text-muted">
+
+                        {{ comment.created_at|timesince }} ago
+
+                    </small>
+
+                </div>
+
+                <p class="mb-2">
+
+                    {{ comment.text|linebreaks }}
+
+                </p>
+
+                {% if user == comment.user %}
+
+                <div class="mt-2">
+
+                    <a
+                        href="{% url 'edit_comment' comment.id %}"
+                        class="btn btn-sm btn-outline-primary">
+
+                        ✏️ Edit
+
+                    </a>
+
+                    <a
+                        href="{% url 'delete_comment' comment.id %}"
+                        class="btn btn-sm btn-outline-danger"
+                        onclick="return confirm('Delete this comment?');">
+
+                        🗑 Delete
+
+                    </a>
+
+                </div>
+
+                {% endif %}
+
+                
+
+                </div>
+
+            </div>
+
+        {% empty %}
+
+            <div class="text-center text-muted py-5">
+
+                No comments yet.
+
+                <br>
+
+                Be the first to comment!
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<div id="shareToast" class="share-toast">
+    ✅ Blog link copied!
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+    {% if user.is_authenticated %}
+
+        <script>
+
+        const likeButton = document.getElementById("likeButton");
+
+        if (likeButton){
+
+            likeButton.addEventListener("click", function(){
+
+                fetch("{% url 'toggle_like' post.slug %}")
+
+                .then(response => response.json())
+
+                .then(data => {
+
+                    document.getElementById("likeCount").innerHTML = data.total_likes;
+
+                    if(data.liked){
+
+                        likeButton.classList.add("liked");
+
+                    }
+
+                    else{
+
+                        likeButton.classList.remove("liked");
+
+                    }
+
+                });
+
+            });
+
+        }
+
+
+
+            const shareButton = document.getElementById("shareButton");
+
+                shareButton.addEventListener("click", async function () {
+
+                    const url = window.location.href;
+
+                    if (navigator.share) {
+
+                        try {
+
+                            await navigator.share({
+                                title: document.title,
+                                text: "Check out this blog!",
+                                url: url
+                            });
+
+                        } catch (err) {}
+
+                    } else {
+
+                        await navigator.clipboard.writeText(url);
+
+                        const toast = document.getElementById("shareToast");
+
+                        toast.classList.add("show");
+
+                        setTimeout(() => {
+                            toast.classList.remove("show");
+                        }, 2000);
+                    }
+
+});
+        </script>
+
+    {% endif %}
+
+{% endblock %}

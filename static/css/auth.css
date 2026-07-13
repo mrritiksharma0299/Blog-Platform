@@ -1,0 +1,173 @@
+/* =========================
+   WorldThread Auth Theme
+========================= */
+
+body{
+    background:#0f172a;
+    color:#f8fafc;
+    font-family:'Poppins',sans-serif;
+}
+
+main{
+    min-height:calc(100vh - 140px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:60px 20px;
+}
+
+/* Card */
+
+.auth-card{
+
+    width:100%;
+    max-width:460px;
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+    border-radius:18px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+    padding:40px;
+
+}
+
+/* Heading */
+
+.auth-card h2{
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+.auth-card p{
+
+    color:#94a3b8;
+
+}
+
+/* Labels */
+
+.auth-card label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    margin-top:18px;
+
+    font-weight:500;
+
+}
+
+/* Inputs */
+
+.auth-card input{
+
+    width:100%;
+
+    padding:13px 15px;
+
+    border-radius:10px;
+
+    border:1px solid #475569;
+
+    background:#0f172a;
+
+    color:white;
+
+    transition:.25s;
+
+}
+
+.auth-card input:focus{
+
+    outline:none;
+
+    border-color:#3b82f6;
+
+    box-shadow:0 0 0 3px rgba(59,130,246,.25);
+
+}
+
+/* Button */
+
+.auth-btn{
+
+    width:100%;
+
+    margin-top:28px;
+
+    padding:13px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.auth-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* Footer */
+
+.auth-footer{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    color:#94a3b8;
+
+}
+
+.auth-footer a{
+
+    color:#60a5fa;
+
+    text-decoration:none;
+
+}
+
+.auth-footer a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* Error messages */
+
+.errorlist{
+    list-style:none;
+    padding:0;
+    margin:6px 0 12px;
+    color:#ef4444;
+    font-size:14px;
+}
+
+/* Help text */
+
+small{
+    display:block;
+    margin-top:8px;
+    color:#94a3b8 !important;
+    line-height:1.5;
+}

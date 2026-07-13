@@ -1,0 +1,56 @@
+.card-author {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin:15px 0;
+
+}
+
+
+.small-author-image {
+
+    width:40px;
+    height:40px;
+
+    min-width:40px;
+    max-width:40px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    background:#212529;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:700;
+
+    font-size:18px;
+
+    overflow:hidden;
+
+}
+
+
+img.small-author-image {
+
+    display:block;
+
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}

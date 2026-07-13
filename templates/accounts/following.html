@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block css %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/followers.css' %}">
+{% endblock %}
+
+{% block title %}
+Following
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="mb-5">
+        ➜ Following
+    </h1>
+
+    {% for profile in following %}
+
+        <div class="follow-user-card">
+
+            {% if profile.profile.profile_image %}
+
+                <img
+                    src="{{ profile.profile.profile_image.url }}"
+                    class="follow-avatar"
+                    alt="{{ profile.username }}"
+                >
+
+            {% else %}
+
+                <div class="follow-avatar follow-default">
+                    {{ profile.username|first|upper }}
+                </div>
+
+            {% endif %}
+
+
+            <div class="follow-info">
+
+                <a href="{% url 'public_profile' profile.username %}">
+                    <h5>{{ profile.username }}</h5>
+                </a>
+
+
+                <p>
+                    {{ profile.profile.bio|default:"No bio yet."|truncatechars:55 }}
+                </p>
+
+            </div>
+
+
+            <div class="follow-action">
+
+                <a
+                    href="{% url 'public_profile' profile.username %}"
+                    class="btn btn-dark btn-sm">
+
+                    View Profile
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+
+            <div class="empty-follow">
+
+                <div class="empty-icon">
+                    🌎
+                </div>
+
+                <h3>
+                    Not following anyone yet
+                </h3>
+
+                <p>
+                    This user is not following anyone yet.
+                    Explore profiles and connect with people around the world.
+                </p>
+
+            </div>
+
+
+        {% endfor %}
+</div>
+
+{% endblock %}

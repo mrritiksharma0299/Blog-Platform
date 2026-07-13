@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-5">
+
+            <div class="auth-card">
+
+                <div class="card-body p-5">
+
+                    <h2 class="text-center">
+                        Welcome Back
+                    </h2>
+
+                    <p class="text-center mb-4">
+                        Sign in to continue to <strong>WorldThread</strong>
+                    </p>
+
+                    <form method="post">
+
+                    {% csrf_token %}
+
+                    <label for="{{ form.username.id_for_label }}">
+                        Username
+                    </label>
+
+                    {{ form.username }}
+
+                    <label for="{{ form.password.id_for_label }}">
+                        Password
+                    </label>
+
+                    {{ form.password }}
+
+                    <button type="submit" class="auth-btn">
+                        Login
+                    </button>
+
+                </form>
+
+                    <hr>
+
+                    <div class="auth-footer">
+
+                        Don't have an account?
+
+                        <a href="{% url 'register' %}">
+                            Register
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

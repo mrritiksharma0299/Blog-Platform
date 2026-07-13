@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/community_feed.css' %}">
+{% endblock %}
+
+{% block title %}
+{{ community.name }} Feed
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-4">
+
+    <h2 class="mb-4">
+        {{ community.name }} Feed
+    </h2>
+
+    <div class="feed-container">
+
+        {% for post in community_posts %}
+
+        <a href="{{ post.get_absolute_url }}"
+            class="text-decoration-none text-dark">
+
+            {% if post.author == user %}
+
+                <div class="blog-card blog-right">
+
+            {% else %}
+
+                <div class="blog-card blog-left">
+
+            {% endif %}
+
+                {% if post.featured_image %}
+
+                    <img
+                        src="{{ post.featured_image.url }}"
+                        class="community-blog-image"
+                        alt="{{ post.title }}">
+
+                {% endif %}
+
+                <div class="card-body">
+
+                    <div class="country mb-2">
+
+                        <span class="fi fi-{{ post.country.code|lower }}"></span>
+
+                        {{ post.country.name }}
+
+                    </div>
+
+                    <h4>{{ post.title }}</h4>
+
+                    <div class="card-author">
+
+                        {% if post.author.profile.profile_image %}
+
+                            <img src="{{ post.author.profile.profile_image.url }}"
+                                class="small-author-image">
+
+                        {% else %}
+
+                            <div class="small-author-image">
+
+                                {{ post.author.username|first|upper }}
+
+                            </div>
+
+                        {% endif %}
+
+                        <div>
+
+                            <strong>{{ post.author.username }}</strong><br>
+
+                            <small class="text-muted">
+
+                                {{ post.created_at|date:"d M Y • H:i" }}
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <p>
+
+                        {{ post.content|truncatewords:35 }}
+
+                    </p>
+
+                </div>
+
+              </a>
+
+            </div>
+
+        {% empty %}
+
+            <p class="text-muted">
+
+                No blogs in this community yet.
+
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+<a href="{% url 'create_blog' %}" class="create-blog-fab">
+    ✍️
+</a>
+
+<script>
+
+window.onload = function(){
+
+    const feed = document.querySelector(".feed-container");
+
+    if(feed){
+        feed.scrollTop = feed.scrollHeight;
+    }
+
+}
+
+</script>
+
+{% endblock %}

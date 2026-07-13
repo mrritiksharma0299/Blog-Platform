@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<div class="profile-page">
+
+
+    <div class="profile-card">
+
+
+        <h2>
+            🔒 Private Blog
+        </h2>
+
+
+        {% if post.visibility == "followers" %}
+
+        <p>
+            This blog is only available to followers.
+            Follow {{ post.author.username }} to read this blog.
+        </p>
+
+
+        {% elif post.visibility == "community" %}
+
+        <p>
+            This blog is only available for members of
+            {{ post.community.name }} community.
+        </p>
+
+
+        {% endif %}
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

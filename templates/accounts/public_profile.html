@@ -1,0 +1,512 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="profile-page">
+
+
+    <div class="profile-card">
+
+
+        <div class="profile-header">
+
+
+            {% if profile_user.profile.profile_image %}
+
+            <img 
+                src="{{ profile_user.profile.profile_image.url }}"
+                class="profile-image"
+                alt="Profile Image">
+
+            {% else %}
+
+            <div class="default-profile">
+                <i class="bi bi-person"></i>
+            </div>
+
+            {% endif %}
+
+
+
+            <h2>
+                {{ profile_user.username }}
+            </h2>
+
+
+
+            <div class="profile-stats">
+
+
+                <a href="{% url 'followers_list' profile_user.username %}">
+                    <strong>{{ followers_count }}</strong>
+                    <span>Followers</span>
+                </a>
+
+
+
+                <a href="{% url 'following_list' profile_user.username %}">
+                    <strong>{{ following_count }}</strong>
+                    <span>Following</span>
+                </a>
+
+
+            </div>
+
+
+
+            <p class="profile-bio">
+
+                {{ profile_user.profile.bio|default:"No bio added yet." }}
+
+            </p>
+
+
+
+        </div>
+
+
+
+
+
+        <div class="profile-details">
+
+
+            <div class="detail-item">
+
+                <i class="bi bi-globe"></i>
+
+                <span>
+                    {{ profile_user.profile.country|default:"Not added" }}
+                </span>
+
+            </div>
+
+
+
+
+
+            {% if profile_user.profile.website %}
+
+            <div class="detail-item">
+
+                <i class="bi bi-link-45deg"></i>
+
+                <a href="{{ profile_user.profile.website }}"
+                   target="_blank">
+
+                    Website
+
+                </a>
+
+            </div>
+
+            {% endif %}
+
+
+
+
+
+
+            {% if profile_user.profile.github %}
+
+            <div class="detail-item">
+
+                <i class="bi bi-github"></i>
+
+                <a href="{{ profile_user.profile.github }}"
+                   target="_blank">
+
+                    Github
+
+                </a>
+
+            </div>
+
+            {% endif %}
+
+
+
+
+
+
+            {% if profile_user.profile.linkedin %}
+
+            <div class="detail-item">
+
+                <i class="bi bi-linkedin"></i>
+
+                <a href="{{ profile_user.profile.linkedin }}"
+                   target="_blank">
+
+                    LinkedIn
+
+                </a>
+
+            </div>
+
+            {% endif %}
+
+
+
+        </div>
+
+
+
+
+
+            {% if user.is_authenticated and user != profile_user %}
+
+            <form method="POST"
+                action="{% url 'toggle_follow' profile_user.username %}">
+
+                {% csrf_token %}
+
+                {% if is_following %}
+
+                    <button class="follow-btn following-btn">
+                        ✓ Following
+                    </button>
+
+                {% elif follows_you %}
+
+                    <button class="follow-btn follow-back-btn">
+                        ↺ Follow Back
+                    </button>
+
+                {% else %}
+
+                    <button class="follow-btn">
+                        + Follow
+                    </button>
+
+                {% endif %}
+
+            </form>
+
+            {% endif %}
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- CLICKABLE SECTIONS -->
+
+
+    <div class="dashboard-grid mt-5">
+
+
+        <div class="dashboard-card section-btn"
+             data-target="blogs-section">
+
+            <h2>{{ total_blogs }}</h2>
+
+            <p>📝 Blogs</p>
+
+        </div>
+
+
+
+
+
+        <div class="dashboard-card section-btn"
+             data-target="communities-section">
+
+            <h2>{{ communities_count }}</h2>
+
+            <p>🌍 Communities</p>
+
+        </div>
+
+
+
+
+
+        <div class="dashboard-card section-btn"
+             data-target="private-section">
+
+            <h2>{{ private_blogs_count }}</h2>
+
+            <p>🔒 Private Blogs</p>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+    <!-- CONTENT SECTIONS -->
+
+
+    <div class="profile-sections">
+
+
+
+
+
+        <div id="blogs-section"
+             class="profile-section">
+
+
+            <h3>
+                📝 {{ profile_user.username }} Blogs
+            </h3>
+
+
+
+           {% for blog in public_blogs %}
+
+
+            <div class="card mb-3">
+
+
+                <div class="card-body">
+
+
+                    <h5>
+                        {{ blog.title }}
+                    </h5>
+
+
+                    <p>
+                        {{ blog.created_at|date:"d M Y" }}
+                    </p>
+
+
+                    <a href="{{ blog.get_absolute_url }}"
+                       class="btn btn-primary btn-sm">
+
+                        View
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            {% empty %}
+
+
+            <p>
+                No blogs published.
+            </p>
+
+
+
+            {% endfor %}
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div id="communities-section"
+             class="profile-section">
+
+
+            <h3>
+                🌍 Communities
+            </h3>
+
+
+
+
+            {% for community in communities %}
+
+
+            <div class="card mb-3">
+
+
+                <div class="card-body">
+
+
+                    <h5>
+                        {{ community.name }}
+                    </h5>
+
+
+                    <p>
+                        {{ community.description }}
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+            {% empty %}
+
+
+            <p>
+                No communities.
+            </p>
+
+
+            {% endfor %}
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+        <div id="private-section"
+             class="profile-section">
+
+
+            <h3>
+                🔒 Private Blogs
+            </h3>
+
+
+
+
+            {% if is_following %}
+
+
+
+                {% for blog in private_blogs %}
+
+
+                <div class="card mb-3">
+
+
+                    <div class="card-body">
+
+
+                        <h5>
+                            {{ blog.title }}
+                        </h5>
+
+
+                        <a href="{{ blog.get_absolute_url }}"
+                           class="btn btn-primary btn-sm">
+
+                            View
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                {% empty %}
+
+
+                <p>
+                    No private blogs.
+                </p>
+
+
+                {% endfor %}
+
+
+
+            {% else %}
+
+
+
+            <p class="private-message">
+
+                🔒 This user's blogs are private.
+                Follow {{ profile_user.username }} to see them.
+
+            </p>
+
+
+
+            {% endif %}
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+const buttons = document.querySelectorAll(".section-btn");
+
+const sections = document.querySelectorAll(".profile-section");
+
+
+
+buttons.forEach(button => {
+
+
+    button.addEventListener("click",()=>{
+
+
+        sections.forEach(section=>{
+
+            section.classList.remove("active");
+
+        });
+
+
+
+        document
+        .getElementById(button.dataset.target)
+        .classList.add("active");
+
+    });
+
+
+});
+
+
+
+document
+.getElementById("blogs-section")
+.classList.add("active");
+
+
+</script>
+
+
+
+{% endblock %}

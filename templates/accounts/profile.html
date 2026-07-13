@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="profile-page">
+
+    <div class="profile-card">
+
+        <div class="profile-header">
+
+            {% if user.profile.profile_image %}
+
+            <img 
+                src="{{ user.profile.profile_image.url }}"
+                class="profile-image"
+                alt="Profile Image"
+            >
+
+            {% else %}
+
+            <div class="default-profile">
+                <i class="bi bi-person"></i>
+            </div>
+
+            {% endif %}
+
+
+            <h2>{{ user.username }}</h2>
+
+            <p class="profile-bio">
+                {{ user.profile.bio|default:"No bio added yet." }}
+            </p>
+
+        </div>
+
+
+        <div class="profile-details">
+
+            <div class="detail-item">
+                <i class="bi bi-globe"></i>
+                <span>
+                    {{ user.profile.country|default:"Not added" }}
+                </span>
+            </div>
+
+
+            <div class="detail-item">
+                <i class="bi bi-link-45deg"></i>
+
+                {% if user.profile.website %}
+                    <a href="{{ user.profile.website }}" target="_blank">
+                        Website
+                    </a>
+                {% else %}
+                    <span>No Website</span>
+                {% endif %}
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <i class="bi bi-github"></i>
+
+                {% if user.profile.github %}
+                    <a href="{{ user.profile.github }}" target="_blank">
+                        Github
+                    </a>
+                {% else %}
+                    <span>No Github</span>
+                {% endif %}
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <i class="bi bi-linkedin"></i>
+
+                {% if user.profile.linkedin %}
+                    <a href="{{ user.profile.linkedin }}" target="_blank">
+                        LinkedIn
+                    </a>
+                {% else %}
+                    <span>No LinkedIn</span>
+                {% endif %}
+
+            </div>
+
+
+        </div>
+
+
+        <a href="{% url 'edit_profile' %}" class="edit-btn">
+            Edit Profile
+        </a>
+
+
+    </div>
+
+
+        <div class="dashboard-grid mt-5">
+
+            <div class="dashboard-card section-btn" data-target="blogs-section">
+                <h2>{{ total_blogs }}</h2>
+                <p>📝 Blogs</p>
+            </div>
+
+
+            <a href="{% url 'followers_list' user.username %}" class="dashboard-card">
+
+                <h2>{{ followers_count }}</h2>
+
+                <p>👥 Followers</p>
+
+            </a>
+
+
+            <a href="{% url 'followers_list' user.username %}" class="dashboard-card">
+
+                <h2>{{ followers_count }}</h2>
+
+                <p>👥 Followers</p>
+
+            </a>
+
+
+            <div class="dashboard-card section-btn" data-target="communities-section">
+                <h2>{{ communities_count }}</h2>
+                <p>🌍 Communities</p>
+            </div>
+
+
+            <div class="dashboard-card section-btn" data-target="public-section">
+                <h2>{{ public_blogs }}</h2>
+                <p>🌐 Public Blogs</p>
+            </div>
+
+
+            <div class="dashboard-card section-btn" data-target="followers-blog-section">
+                <h2>{{ followers_blogs }}</h2>
+                <p>🔒 Followers Blogs</p>
+            </div>
+
+        </div>
+
+        
+
+
+        <div class="profile-sections">
+
+
+            <div id="blogs-section" class="profile-section">
+
+                <h3>📝 My Blogs</h3>
+
+                {% for blog in posts %}
+
+                <div class="card mb-3">
+
+                    <div class="card-body">
+
+                        <h5>{{ blog.title }}</h5>
+
+                        <p>
+                            {{ blog.created_at|date:"d M Y" }}
+                        </p>
+
+
+                        <a href="{{ blog.get_absolute_url }}"
+                           class="btn btn-primary btn-sm">
+
+                            View
+
+                        </a>
+
+
+                        <a href="{% url 'delete_blog' blog.slug %}"
+                           class="btn btn-danger btn-sm">
+
+                            Delete
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                {% empty %}
+
+                <p>
+                    No blogs yet.
+                </p>
+
+                {% endfor %}
+
+            </div>
+
+
+
+            <div id="communities-section" class="profile-section">
+
+                <h3>🌍 Communities</h3>
+
+
+                {% for community in communities %}
+
+                <div class="card mb-3">
+
+                    <div class="card-body">
+
+                        <h5>
+                            {{ community.name }}
+                        </h5>
+
+                        <p>
+                            {{ community.description|truncatechars:100 }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                {% empty %}
+
+                <p>
+                    No communities joined.
+                </p>
+
+                {% endfor %}
+
+
+            </div>
+
+
+
+            <div id="public-section" class="profile-section">
+
+                <h3>🌐 Public Blogs</h3>
+
+                <p>
+                    Public blogs will appear here.
+                </p>
+
+            </div>
+
+
+
+            <div id="followers-blog-section" class="profile-section">
+
+                <h3>🔒 Followers Blogs</h3>
+
+                <p>
+                    Followers-only blogs will appear here.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+</div>
+
+
+<script>
+
+const buttons = document.querySelectorAll(".section-btn");
+
+const sections = document.querySelectorAll(".profile-section");
+
+
+buttons.forEach(button => {
+
+    button.addEventListener("click", function(){
+
+        sections.forEach(section => {
+            section.classList.remove("active");
+        });
+
+
+        document
+        .getElementById(this.dataset.target)
+        .classList.add("active");
+
+    });
+
+});
+
+document
+.getElementById("blogs-section")
+.classList.add("active");
+
+</script>
+
+
+{% endblock %}
+
+

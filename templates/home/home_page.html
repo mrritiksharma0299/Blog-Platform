@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block title %}
+WorldThread
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="hero-section">
+
+    <div class="container">
+
+        <div class="hero-card">
+
+
+            {% if page.hero_image %}
+
+            {% image page.hero_image fill-1200x600 as hero_img %}
+
+            <img 
+                src="{{ hero_img.url }}"
+                class="hero-image"
+                alt="WorldThread">
+            
+
+            {% endif %}
+
+
+            <div class="hero-overlay">
+
+                <h1>
+                    {{ page.hero_title }}
+                </h1>
+
+
+                <div>
+                    {{ page.hero_description|richtext }}
+                </div>
+
+
+                <a href="{% url 'blog_list' %}" 
+                   class="btn btn-primary">
+
+                    Explore Blogs
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="categories-section">
+
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+            Trending Categories
+        </h2>
+
+
+        <div class="category-wrapper">
+
+
+            <a href="{% url 'category_detail' 'Travel' %}" class="category-link">
+                <div class="category-card">
+                    🌍
+                    <span>Travel</span>
+                </div>
+            </a>
+
+
+            <a href="{% url 'category_detail' 'Sports' %}" class="category-link">
+                <div class="category-card">
+                    ⚽
+                    <span>Sports</span>
+                </div>
+            </a>
+
+
+            <a href="{% url 'category_detail' 'Food' %}" class="category-link">
+                <div class="category-card">
+                    🍔
+                    <span>Food</span>
+                </div>
+            </a>
+
+
+            <a href="{% url 'category_detail' 'Business' %}" class="category-link">
+                <div class="category-card">
+                    💼
+                    <span>Business</span>
+                </div>
+            </a>
+
+
+            <a href="{% url 'category_detail' 'Technology' %}" class="category-link">
+                <div class="category-card">
+                    💻
+                    <span>Technology</span>
+                </div>
+            </a>
+
+
+            <a href="{% url 'category_detail' 'Gaming' %}" class="category-link">
+                <div class="category-card">
+                    🎮
+                    <span>Gaming</span>
+                </div>
+            </a>
+
+
+            <a href="{% url 'category_detail' 'Photography' %}" class="category-link">
+                <div class="category-card">
+                    📸
+                    <span>Photography</span>
+                </div>
+            </a>
+
+
+            <a href="{% url 'category_detail' 'Education' %}" class="category-link">
+                <div class="category-card">
+                    📚
+                    <span>Education</span>
+                </div>
+            </a>        
+
+
+            <a href="{% url 'category_detail' 'Music' %}" class="category-link">
+                <div class="category-card">
+                    🎵
+                    <span>Music</span>
+                </div>
+            </a>
+
+
+            <a href="{% url 'category_detail' 'Movies' %}" class="category-link">
+                <div class="category-card">
+                    🎬
+                    <span>Movies</span>
+                </div>
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="trending-section">
+
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+        🔥 Trending Posts
+        </h2>
+
+
+    <div class="row">
+
+
+        {% for post in trending_posts %}
+
+
+            <div class="col-md-4 mb-4">
+
+
+                <div class="card post-card">
+
+
+                <div class="blog-image">
+
+                    {% if post.featured_image %}
+
+                        <img
+                            src="{{ post.featured_image.url }}"
+                            class="card-img-top"
+                            alt="{{ post.title }}">
+
+                    {% else %}
+
+                        <div class="no-image">
+                            <i class="bi bi-image"></i>
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+
+                    <div class="card-body d-flex flex-column">
+
+                    <div class="country-badge">
+
+                        <span class="fi fi-{{ post.country.code|lower }}"></span>
+
+                        <strong>{{ post.country.name }}</strong>
+
+                    </div>
+
+                        <h5 class="card-title">
+                            {{ post.title }}
+                        </h5>
+
+                        <div class="mt-auto">
+
+                            <p class="text-muted">
+                                ✍️ By {{ post.author.username }}
+                            </p>
+
+                            <div class="mb-3">
+
+                                ❤️ {{ post.total_likes }}
+
+                                &nbsp;&nbsp;
+
+                                💬 {{ post.total_comments }}
+
+                            </div>
+
+                            <a
+                                href="{{ post.get_absolute_url }}"
+                                class="btn btn-dark w-100">
+
+                                Read More
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        {% endfor %}
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+{% endblock %}

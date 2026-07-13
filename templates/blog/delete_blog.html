@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Delete Blog
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/delete_blog.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h2 class="text-center text-danger mb-4">
+        Delete Blog
+    </h2>
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card shadow-lg">
+
+                <div class="blog-image">
+
+                    {% if post.featured_image %}
+
+                        <img
+                            src="{{ post.featured_image.url }}"
+                            class="card-img-top"
+                            alt="{{ post.title }}"
+                        >
+
+                    {% else %}
+
+                        <div class="no-image">
+                            <i class="bi bi-image"></i>
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="card-body d-flex flex-column">
+
+                    <div class="country mb-2">
+                        <span class="fi fi-{{ post.country.code|lower }}"></span>
+                        {{ post.country.name }}
+                    </div>
+
+                    <h4 class="card-title">
+                        {{ post.title }}
+                    </h4>
+
+                    <div class="card-author mt-3">
+
+                        {% if post.author.profile.profile_image %}
+
+                            <img
+                                src="{{ post.author.profile.profile_image.url }}"
+                                class="small-author-image"
+                            >
+
+                        {% else %}
+
+                            <div class="small-author-image">
+                                {{ post.author.username|first|upper }}
+                            </div>
+
+                        {% endif %}
+
+                        {{ post.author.username }}
+
+                    </div>
+
+                    <small class="text-muted mt-3">
+                        Published on {{ post.created_at|date:"d M Y" }}
+                    </small>
+
+                    <small class="text-muted">
+                        Visibility :
+                        {{ post.get_visibility_display }}
+                    </small>
+
+                    {% if post.community %}
+                    <small class="text-muted">
+                        Community :
+                        {{ post.community.name }}
+                    </small>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            <div class="alert alert-warning mt-4">
+
+                <h5>
+                    ⚠️ Are you sure?
+                </h5>
+
+                <p class="mb-0">
+                    This blog will be permanently deleted.
+                    This action cannot be undone.
+                </p>
+
+            </div>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    class="btn btn-danger">
+
+                    <i class="bi bi-trash"></i>
+                    Delete Blog
+
+                </button>
+
+                <a
+                    href="{% url 'profile' %}"
+                    class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

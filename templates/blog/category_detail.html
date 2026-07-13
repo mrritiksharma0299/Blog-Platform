@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ category }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="category-banner">
+
+        <h1>
+            📂 {{ category }}
+        </h1>
+
+        <p>
+
+            {{ posts.count }} Blog{{ posts.count|pluralize }}
+
+        </p>
+
+    </div>
+
+    <div class="row g-4 mt-2">
+
+        {% for post in posts %}
+
+        <div class="col-lg-4">
+
+            <div class="blog-card">
+
+                {% if post.featured_image %}
+
+                <img src="{{ post.featured_image.url }}"
+                     class="blog-image">
+
+                {% endif %}
+
+                <div class="blog-body">
+
+                    <h4>
+
+                        {{ post.title }}
+
+                    </h4>
+
+                    <p class="author">
+
+                        ✍️ {{ post.author.username }}
+
+                    </p>
+
+                    <p class="date">
+
+                        {{ post.created_at|date:"F d, Y" }}
+
+                    </p>
+
+                    <a href="{{ post.get_absolute_url }}"
+                       class="read-btn">
+
+                        Read Blog →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="empty-category">
+
+            <h2>
+
+                😔 No blogs in {{ category }}
+
+            </h2>
+
+            <p>
+
+                Be the first person to publish one.
+
+            </p>
+
+            {% if user.is_authenticated %}
+
+            <a href="{% url 'create_blog' %}"
+               class="btn btn-dark btn-lg">
+
+                ✍️ Create Blog
+
+            </a>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% if user.is_authenticated %}
+
+<a href="{% url 'create_blog' %}"
+   class="floating-create">
+
+    +
+
+</a>
+
+{% endif %}
+
+{% endblock %}

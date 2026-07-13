@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<div class="container mt-5">
+
+
+<h2>
+    🔔 Notifications
+</h2>
+
+
+
+{% for notification in notifications %}
+
+
+<div class="notification-card">
+
+
+
+    <div class="notification-top">
+
+
+        <div class="notification-message">
+
+
+            {% if notification.notification_type == "follow" %}
+
+                👤 <strong>{{ notification.sender.username }}</strong>
+                started following you.
+
+            {% elif notification.notification_type == "blog" %}
+
+                📝 <strong>{{ notification.sender.username }}</strong>
+                posted a new blog.
+
+            {% elif notification.notification_type == "like" %}
+
+                ❤️ <strong>{{ notification.sender.username }}</strong>
+                liked your blog.
+
+            {% elif notification.notification_type == "comment" %}
+
+                💬 <strong>{{ notification.sender.username }}</strong>
+                commented on your blog.
+
+            {% endif %}
+
+
+        </div>
+
+
+
+            {% if notification.notification_type == "follow" %}
+
+            <a href="{% url 'public_profile' notification.sender.username %}"
+            class="btn btn-outline-primary btn-sm">
+
+                View Profile
+
+            </a>
+
+            {% else %}
+
+            <a href="{{ notification.post.get_absolute_url }}"
+            class="btn btn-outline-primary btn-sm">
+
+                View Blog
+
+            </a>
+
+            {% endif %}
+
+
+
+    </div>
+
+
+
+
+
+    {% if notification.post %}
+
+    <p class="mt-2 mb-2">
+        <strong>
+            "{{ notification.post.title }}"
+        </strong>
+    </p>
+
+    {% endif %}
+
+
+
+
+
+    <small>
+
+        {{ notification.created_at|date:"d M Y" }}
+
+    </small>
+
+
+
+
+</div>
+
+
+
+{% empty %}
+
+
+<p>
+No notifications yet.
+</p>
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+{% endblock %}

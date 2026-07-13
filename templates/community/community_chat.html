@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/community_chat.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2>
+        💬 {{ community.name }} Chat
+    </h2>
+
+    <hr>
+
+    <div class="chat-box">
+
+        {% for message in messages %}
+
+            <div class="mb-3">
+
+                <strong>
+
+                    {{ message.sender.username }}
+
+                </strong>
+
+                <small class="text-muted">
+
+                    {{ message.created_at|date:"d M H:i" }}
+
+                </small>
+
+                <div>
+
+                    {{ message.message }}
+
+                </div>
+
+            </div>
+
+            <hr>
+
+        {% empty %}
+
+            <p>No messages yet.</p>
+
+        {% endfor %}
+
+    </div>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.message }}
+
+        <button
+            class="btn btn-primary mt-2">
+
+            Send
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

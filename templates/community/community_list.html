@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+Communities
+{% endblock %}
+
+
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="container py-5">
+
+
+    <div class="community-header">
+
+        <h1>
+            🌎 Explore Communities
+        </h1>
+
+        <p>
+            Join communities, share ideas and connect with people.
+        </p>
+
+    </div>
+
+
+
+    <div class="community-grid">
+
+
+        {% for community in communities %}
+
+
+        <div class="community-card">
+
+
+            <div class="community-icon-wrapper">
+
+                {% if community.image %}
+
+                <img 
+                src="{{ community.image.url }}"
+                class="community-image">
+
+
+                {% else %}
+
+                <div class="community-default">
+
+                {{ community.name|first|upper }}
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+
+
+            <div class="community-content">
+
+
+                <h3>
+                    {{ community.name }}
+                </h3>
+
+
+                <p>
+
+                    {{ community.description|truncatechars:120 }}
+
+                </p>
+
+
+                <div class="community-meta">
+
+                    👤 Created by 
+                    <strong>
+                        {{ community.creator.username }}
+                    </strong>
+
+                </div>
+
+
+
+                    <a 
+                    href="{% url 'community_detail' community.slug %}"
+                    class="community-btn">
+
+                        View Community
+
+                    </a>
+
+
+            </div>
+
+
+        </div>
+
+
+        {% empty %}
+
+
+        <div class="empty-community">
+
+            <h2>
+                No communities available yet.
+            </h2>
+
+            <p>
+                Create the first community and start connecting.
+            </p>
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</div>
+
+<a href="{% url 'create_community' %}"
+class="create-community-btn">
+
+    +
+    Create Your Own Community
+
+</a>
+
+{% endblock %}

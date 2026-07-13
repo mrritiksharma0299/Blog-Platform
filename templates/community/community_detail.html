@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/community_detail.css' %}">
+{% endblock %}
+
+{% block title %}
+{{ community.name }}
+{% endblock %}
+
+{% block content %}
+
+<div class="community-header">
+
+    {% if community.image %}
+
+        <img
+            src="{{ community.image.url }}"
+            class="community-cover">
+
+    {% else %}
+
+        <div class="community-cover-default">
+
+            {{ community.name|first|upper }}
+
+        </div>
+
+    {% endif %}
+
+    <div class="community-info">
+
+        <h1>{{ community.name }}</h1>
+
+        <p>{{ community.description }}</p>
+
+        <div class="community-meta">
+
+            <span>
+                👤 {{ community.creator.username }}
+            </span>
+
+            <span>
+                👥 {{ community.total_members }} Members
+            </span>
+
+        </div>
+
+            {% if user.is_authenticated %}
+
+                {% if is_member %}
+
+                    <div class="mt-3 d-flex align-items-center gap-3">
+
+                        <form
+                            method="POST"
+                            action="{% url 'toggle_membership' community.slug %}"
+                            class="m-0">
+
+                            {% csrf_token %}
+
+                            <button class="leave-btn">
+                                Leave Community
+                            </button>
+
+                        </form>
+
+                        <a href="{% url 'community_chat' community.slug %}"
+                        class="btn btn-primary">
+
+                            💬 Community Chat
+
+                        </a>
+
+                        <a href="{% url 'community_feed' community.slug %}"
+                            class="btn btn-primary">
+
+                            📝 Community Feed
+
+                        </a>
+
+                    </div>
+
+                {% else %}
+
+                    <form
+                        method="POST"
+                        action="{% url 'toggle_membership' community.slug %}">
+
+                        {% csrf_token %}
+
+                        <button class="join-btn">
+                            Join Community
+                        </button>
+
+                    </form>
+
+                {% endif %}
+
+            {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

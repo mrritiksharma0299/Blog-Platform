@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Create Blog{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/create_blog.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="auth-card">
+
+                <h2 class="text-center mb-2">
+                    ✍️ Create a New Blog
+                </h2>
+
+                <p class="text-center text-muted mb-4">
+                    Share your story with people around the world.
+                </p>
+
+                <form method="post" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+                    {{ form.non_field_errors }}
+
+                    <div class="mb-3">
+                        <label>Title</label>
+                        {{ form.title }}
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label>Country</label>
+                            {{ form.country }}
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label>Category</label>
+                            {{ form.category }}
+                        </div>
+
+                        <div class="col-md-6 mb-3" id="other-category-div" style="display: none;">
+                            <label>Other Category</label>
+                            {{ form.other_category }}
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label>Visibility</label>
+                            {{ form.visibility }}
+                        </div>
+
+                        <div class="col-md-6 mb-3"
+                            id="community-div"
+                            style="display:none;">
+
+                            <label>Community</label>
+                            {{ form.community }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label>Featured Image</label>
+                        {{ form.featured_image }}
+                    </div>
+
+
+
+                    <div class="mb-4">
+                        <label>Content</label>
+                        {{ form.content }}
+                    </div>
+
+                    <button type="submit" class="auth-btn w-100">
+                        🚀 Publish Blog
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const category = document.getElementById("id_category");
+    const otherCategory = document.getElementById("other-category-div");
+
+    const visibility = document.getElementById("id_visibility");
+    const community = document.getElementById("community-div");
+
+    function toggleOtherCategory() {
+
+        if (category.value === "Other") {
+            otherCategory.style.display = "block";
+        } else {
+            otherCategory.style.display = "none";
+        }
+
+    }
+
+    function toggleCommunity() {
+
+        if (visibility.value === "community") {
+            community.style.display = "block";
+        } else {
+            community.style.display = "none";
+        }
+
+    }
+
+    toggleOtherCategory();
+    toggleCommunity();
+
+    category.addEventListener("change", toggleOtherCategory);
+    visibility.addEventListener("change", toggleCommunity);
+
+});
+
+</script>
+
+{% endblock %}

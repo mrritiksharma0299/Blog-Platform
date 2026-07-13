@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+Categories
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="category-header text-center mb-5">
+
+        <h1>📚 Explore Categories</h1>
+
+        <p>
+            Discover blogs from different topics around the world.
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        {% for category in categories %}
+
+        <div class="col-lg-3 col-md-4 col-sm-6">
+
+            <a href="{% url 'category_detail' category.category %}"
+               class="category-box">
+
+                <div class="category-icon">
+                    📂
+                </div>
+
+                <h4>
+                    {{ category.category }}
+                </h4>
+
+                <p>
+                    {{ category.total }} Blog{{ category.total|pluralize }}
+                </p>
+
+                <span class="explore-btn">
+                    Explore →
+                </span>
+
+            </a>
+
+        </div>
+
+        {% empty %}
+
+        <div class="text-center py-5">
+
+            <h2>No Categories Yet</h2>
+
+            <p class="text-muted">
+                Publish your first blog to create one.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}
