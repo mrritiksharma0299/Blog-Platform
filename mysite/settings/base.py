@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from pathlib import Path
 
+import os
+
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = PROJECT_DIR.parent
 
@@ -46,6 +48,10 @@ INSTALLED_APPS = [
     "wagtail",
     "modelcluster",
     "taggit",
+
+    "cloudinary",
+    "cloudinary_storage",
+
     "django_filters",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -156,7 +162,7 @@ MEDIA_URL = "/media/"
 # See https://docs.djangoproject.com/en/6.0/ref/settings/#std-setting-STORAGES
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
@@ -199,3 +205,10 @@ LOGOUT_REDIRECT_URL = "/"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": os.getenv("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": os.getenv("CLOUDINARY_API_KEY"),
+    "API_SECRET": os.getenv("CLOUDINARY_API_SECRET"),
+}
