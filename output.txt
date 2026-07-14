@@ -1,0 +1,337 @@
+ Volume in drive C is OS
+ Volume Serial Number is 2AD5-E8CE
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          admin
+14-07-2026  11:46    <DIR>          wagtailadmin
+14-07-2026  11:46    <DIR>          wagtaildocs
+14-07-2026  11:46    <DIR>          wagtailembeds
+14-07-2026  11:46    <DIR>          wagtailimages
+14-07-2026  11:46    <DIR>          wagtailsnippets
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\admin
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          css
+14-07-2026  11:46    <DIR>          js
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\admin\css
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          vendor
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\admin\css\vendor
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          select2
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\admin\css\vendor\select2
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46             1,124 LICENSE-SELECT2.f94142512c91.md
+14-07-2026  11:46            17,358 select2.a2194c262648.css
+14-07-2026  11:46            14,966 select2.min.9f54e6414f87.css
+               3 File(s)         33,448 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\admin\js
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          admin
+14-07-2026  11:46    <DIR>          vendor
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\admin\js\admin
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46            19,698 DateTimeShortcuts.5a6d4ad12024.js
+14-07-2026  11:46             9,777 RelatedObjectLookups.ed6240809a40.js
+               2 File(s)         29,475 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\admin\js\vendor
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          jquery
+14-07-2026  11:46    <DIR>          select2
+14-07-2026  11:46    <DIR>          xregexp
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\admin\js\vendor\jquery
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46           285,314 jquery.12e87d2f3a4c.js
+14-07-2026  11:46            87,533 jquery.min.2c872dbe60f4.js
+14-07-2026  11:46             1,097 LICENSE.de877aa6d744.txt
+               3 File(s)        373,944 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\admin\js\vendor\select2
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          i18n
+14-07-2026  11:46             1,124 LICENSE.f94142512c91.md
+14-07-2026  11:46           173,566 select2.full.c2afdeda3058.js
+14-07-2026  11:46            79,212 select2.full.min.fcd7500d8e13.js
+               3 File(s)        253,902 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\admin\js\vendor\select2\i18n
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46               866 af.4f6fcd73488c.js
+14-07-2026  11:46               905 ar.65aa8e36bf5d.js
+14-07-2026  11:46               721 az.270c257daf81.js
+14-07-2026  11:46               968 bg.39b8be30d4f0.js
+14-07-2026  11:46             1,291 bn.6d42b4dd5665.js
+14-07-2026  11:46               965 bs.91624382358e.js
+14-07-2026  11:46               900 ca.a166b745933a.js
+14-07-2026  11:46             1,292 cs.4f43e8e7d33a.js
+14-07-2026  11:46               828 da.766346afe4dd.js
+14-07-2026  11:46               866 de.8a1c222b0204.js
+14-07-2026  11:46             1,017 dsb.56372c92d2f1.js
+14-07-2026  11:46             1,182 el.27097f071856.js
+14-07-2026  11:46               844 en.cf932ba09a98.js
+14-07-2026  11:46               922 es.66dbc2652fb1.js
+14-07-2026  11:46               801 et.2b96fd98289d.js
+14-07-2026  11:46               868 eu.adfe5c97b72c.js
+14-07-2026  11:46             1,023 fa.3b5bd1961cfd.js
+14-07-2026  11:46               803 fi.614ec42aa9ba.js
+14-07-2026  11:46               924 fr.05e0542fcfe6.js
+14-07-2026  11:46               924 gl.d99b1fedaa86.js
+14-07-2026  11:46               984 he.e420ff6cd3ed.js
+14-07-2026  11:46             1,175 hi.70640d41628f.js
+14-07-2026  11:46               852 hr.a2b092cc1147.js
+14-07-2026  11:46             1,018 hsb.fa3b55265efe.js
+14-07-2026  11:46               831 hu.6ec6039cb8a3.js
+14-07-2026  11:46             1,028 hy.c7babaeef5a6.js
+14-07-2026  11:46               768 id.04debded514d.js
+14-07-2026  11:46               807 is.3ddd9a6a97e9.js
+14-07-2026  11:46               897 it.be4fe8d365b5.js
+14-07-2026  11:46               862 ja.170ae885d74f.js
+14-07-2026  11:46             1,195 ka.2083264a54f0.js
+14-07-2026  11:46             1,088 km.c23089cb06ca.js
+14-07-2026  11:46               855 ko.e7be6c20e673.js
+14-07-2026  11:46               944 lt.23c7ce903300.js
+14-07-2026  11:46               900 lv.08e62128eac1.js
+14-07-2026  11:46             1,038 mk.dabbb9087130.js
+14-07-2026  11:46               811 ms.4ba82c9a51ce.js
+14-07-2026  11:46               778 nb.da2fce143f27.js
+14-07-2026  11:46             1,357 ne.3d79fd3f08db.js
+14-07-2026  11:46               904 nl.997868a37ed8.js
+14-07-2026  11:46               947 pl.6031b4f16452.js
+14-07-2026  11:46             1,049 ps.38dfa47af9e0.js
+14-07-2026  11:46               876 pt-BR.e1b294433e7f.js
+14-07-2026  11:46               878 pt.33b4a3b44d43.js
+14-07-2026  11:46               938 ro.f75cb460ec3b.js
+14-07-2026  11:46             1,171 ru.934aa95f5b5f.js
+14-07-2026  11:46             1,306 sk.33d02cef8d11.js
+14-07-2026  11:46               925 sl.131a78bc0752.js
+14-07-2026  11:46               903 sq.5636b60d29c9.js
+14-07-2026  11:46             1,109 sr-Cyrl.f254bb8c4c7c.js
+14-07-2026  11:46               980 sr.5ed85a48f483.js
+14-07-2026  11:46               786 sv.7a9c2f71e777.js
+14-07-2026  11:46             1,074 th.f38c20b0221b.js
+14-07-2026  11:46               771 tk.7c572a68c78f.js
+14-07-2026  11:46               775 tr.b5a0643d1545.js
+14-07-2026  11:46             1,156 uk.8cede7f4803c.js
+14-07-2026  11:46               796 vi.097a5b75b3e1.js
+14-07-2026  11:46               768 zh-CN.2cff662ec5f9.js
+14-07-2026  11:46               707 zh-TW.04554a227c2b.js
+              59 File(s)         55,917 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\admin\js\vendor\xregexp
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46             1,106 LICENSE.b6fd2ceea8d3.txt
+14-07-2026  11:46           325,171 xregexp.a7e08b0ce686.js
+14-07-2026  11:46           163,184 xregexp.min.f1ae4617847c.js
+               3 File(s)        489,461 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailadmin
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          css
+14-07-2026  11:46    <DIR>          images
+14-07-2026  11:46    <DIR>          js
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailadmin\css
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          panels
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailadmin\css\panels
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46            24,204 draftail.85d76b3b1fef.css
+14-07-2026  11:46                 0 draftail.d41d8cd98f00.js
+14-07-2026  11:46             1,077 streamfield.7df86262287d.css
+14-07-2026  11:46                 0 streamfield.d41d8cd98f00.js
+               4 File(s)         25,281 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailadmin\images
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          icons
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailadmin\images\icons
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46               304 arrow-down.676a2040457d.svg
+14-07-2026  11:46               307 arrow-left.c6fcc84dcc37.svg
+14-07-2026  11:46               306 arrow-right.34c6be4afa76.svg
+14-07-2026  11:46               310 arrow-up.8a4bee43d891.svg
+14-07-2026  11:46               301 check.ef6c996f2262.svg
+14-07-2026  11:46               442 cross.66b781c0c219.svg
+14-07-2026  11:46               533 home.5037a6fc8098.svg
+14-07-2026  11:46               199 radio-full.c6aa220475df.svg
+14-07-2026  11:46               886 spinner.d975ca0dd50e.svg
+14-07-2026  11:46               388 tag.a14198b47c11.svg
+14-07-2026  11:46               479 warning.821006ddbe1c.svg
+              11 File(s)          4,455 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailadmin\js
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          telepath
+14-07-2026  11:46    <DIR>          vendor
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailadmin\js\telepath
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46            35,862 blocks.843686af73d5.js
+14-07-2026  11:46             1,379 telepath.fa1e7242c685.js
+14-07-2026  11:46             5,346 widgets.62820484bcba.js
+               3 File(s)         42,587 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailadmin\js\vendor
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46             3,869 bootstrap-modal.07c3a78dcb1a.js
+14-07-2026  11:46               870 bootstrap-transition.80c77f2f36ae.js
+14-07-2026  11:46            89,231 jquery-3.6.0.min.b99e3172f9b5.js
+14-07-2026  11:46                89 jquery-3.6.0.min.js.LICENSE.3256b7d2fae1.txt
+14-07-2026  11:46           253,905 jquery-ui-1.13.2.min.c31c158b9d0c.js
+14-07-2026  11:46             1,134 jquery-ui-1.13.2.min.js.LICENSE.e408add35cca.txt
+14-07-2026  11:46               444 jquery.ba-throttle-debounce.min.c8e2888d6bbd.js
+14-07-2026  11:46            61,322 jquery.datetimepicker.695e601ad562.js
+14-07-2026  11:46               708 jquery.datetimepicker.js.LICENSE.ed01cc285233.txt
+14-07-2026  11:46             1,873 jquery.fileupload-process.c57b90e96138.js
+14-07-2026  11:46             1,255 jquery.fileupload-validate.2b5a988cfc1e.js
+14-07-2026  11:46            17,512 jquery.fileupload.c93d53da0a61.js
+14-07-2026  11:46             2,167 jquery.iframe-transport.ab326a6654fd.js
+14-07-2026  11:46             8,010 tag-it.0fff4fb55e10.js
+              14 File(s)        442,389 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtaildocs
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          js
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtaildocs\js
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46             2,841 add-multiple.e7f4cb9be1f8.js
+14-07-2026  11:46             1,835 document-chooser-modal.ed40682ab8f9.js
+14-07-2026  11:46             1,581 document-chooser-telepath.fe18ced0e781.js
+14-07-2026  11:46             1,461 document-chooser.acfeef72f570.js
+               4 File(s)          7,718 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailembeds
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          js
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailembeds\js
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46               356 embed-chooser-modal.57318befc112.js
+               1 File(s)            356 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailimages
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          images
+14-07-2026  11:46    <DIR>          js
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailimages\images
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46               329 Jcrop.7a4b4c6ebdb5.gif
+               1 File(s)            329 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailimages\js
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46             3,437 add-multiple.3200186b5e5a.js
+14-07-2026  11:46             1,850 focal-point-chooser.40ba1d8132e2.js
+14-07-2026  11:46               595 image-block.73bbe08c826a.js
+14-07-2026  11:46             3,187 image-chooser-modal.d668b7ec21b7.js
+14-07-2026  11:46             2,175 image-chooser-telepath.990e8a075c8c.js
+14-07-2026  11:46             2,061 image-chooser.857b19379bdf.js
+14-07-2026  11:46    <DIR>          vendor
+               6 File(s)         13,305 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailimages\js\vendor
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46             3,428 jquery.fileupload-image.dfc03cfb74a8.js
+14-07-2026  11:46            15,351 jquery.Jcrop.min.762bea5f44b3.js
+14-07-2026  11:46            16,225 load-image.min.732a3f0aded1.js
+               3 File(s)         35,004 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailsnippets
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46    <DIR>          js
+               0 File(s)              0 bytes
+
+ Directory of C:\Users\pandi\OneDrive\Desktop\blog_platform\staticfiles\wagtailsnippets\js
+
+14-07-2026  11:46    <DIR>          .
+14-07-2026  11:46    <DIR>          ..
+14-07-2026  11:46             1,571 snippet-chooser-telepath.7fb0f27766b1.js
+14-07-2026  11:46             1,471 snippet-chooser.98b071d0a415.js
+               2 File(s)          3,042 bytes
+
+     Total Files Listed:
+             122 File(s)      1,810,613 bytes
+              89 Dir(s)  275,394,158,592 bytes free
