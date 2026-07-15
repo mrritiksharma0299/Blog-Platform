@@ -24,10 +24,7 @@ DATABASES = {
     )
 }
 
-MIDDLEWARE.insert(
-    1,
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-)
+
 
 try:
     from .local import *
