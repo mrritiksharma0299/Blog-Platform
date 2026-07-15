@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from pathlib import Path
 import os
-
+import cloudinary
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -51,6 +51,9 @@ INSTALLED_APPS = [
     "wagtail",
     "modelcluster",
     "taggit",
+
+    "cloudinary",
+    "cloudinary_storage",
 
     "django_filters",
     "django.contrib.admin",
@@ -161,12 +164,14 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Django sets a maximum of 1000 fields per form by default, but particularly complex page models
@@ -207,3 +212,11 @@ LOGOUT_REDIRECT_URL = "/"
 # Media files
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+cloudinary.config(
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET")
+)
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"  
