@@ -5,6 +5,8 @@ import dj_database_url
 
 DEBUG = False
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 SECRET_KEY = os.getenv(
     "SECRET_KEY",
     "django-insecure--!mdmzfxkg-x00da=opig_5s=065rbj%qu24obnbjpb5=xt&dm",

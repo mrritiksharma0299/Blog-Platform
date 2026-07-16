@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     "taggit",
 
     "cloudinary",
-    'cloudinary_storage',
 
     "django_filters",
     "django.contrib.admin",
@@ -165,14 +164,12 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STORAGES = {
     "default": {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 
 CLOUDINARY_STORAGE = {
@@ -216,7 +213,7 @@ LOGOUT_REDIRECT_URL = "/"
 
 # Media files
 MEDIA_URL = "/media/"
-# MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = BASE_DIR / "media"
 
 cloudinary.config(
     cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
