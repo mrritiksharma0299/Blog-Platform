@@ -7,7 +7,6 @@ from wagtail.images.models import Image
 
 from blog.models import Post
 
-
 class HomePage(Page):
 
     hero_title = models.CharField(

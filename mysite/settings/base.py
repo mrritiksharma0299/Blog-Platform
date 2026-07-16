@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "taggit",
 
     "cloudinary",
+    "cloudinary_storage",
 
     "django_filters",
     "django.contrib.admin",
@@ -164,7 +165,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",

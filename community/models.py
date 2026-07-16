@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 
-
+from cloudinary.models import CloudinaryField
 
 
 class Community(models.Model):
@@ -19,8 +19,9 @@ class Community(models.Model):
 
     description = models.TextField()
 
-    image = models.ImageField(
-        upload_to="community/",
+    image = CloudinaryField(
+        "image",
+        folder="community",
         blank=True,
         null=True
     )
