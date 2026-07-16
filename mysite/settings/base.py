@@ -173,6 +173,11 @@ STORAGES = {
 }
 
 
+STATICFILES_STORAGE = (
+    "whitenoise.storage.CompressedManifestStaticFilesStorage"
+)
+
+
 CLOUDINARY_STORAGE = {
     "PREFIX": "",
 }
