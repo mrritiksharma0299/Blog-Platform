@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
-
+from cloudinary.models import CloudinaryField
 
 class Profile(models.Model):
 
@@ -11,8 +11,8 @@ class Profile(models.Model):
         related_name="profile",
     )
 
-    profile_image = models.ImageField(
-        upload_to="profiles/",
+    profile_image = CloudinaryField(
+        "image",
         blank=True,
         null=True,
     )

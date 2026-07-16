@@ -4,6 +4,7 @@ from django.urls import reverse
 from django_countries.fields import CountryField
 from django.utils.text import slugify
 from django.utils.crypto import get_random_string
+from cloudinary.models import CloudinaryField
 
 CATEGORY_CHOICES = [
     ("Sports", "Sports"),
@@ -76,8 +77,8 @@ class Post(models.Model):
 
     content = models.TextField()
 
-    featured_image = models.ImageField(
-        upload_to="blog_images/",
+    featured_image = CloudinaryField(
+        "image",
         blank=True,
         null=True
     )
