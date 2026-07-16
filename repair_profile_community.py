@@ -1,6 +1,8 @@
 import os
 import django
 
+import glob
+
 os.environ.setdefault(
     "DJANGO_SETTINGS_MODULE",
     "mysite.settings.production"
@@ -34,6 +36,13 @@ def repair_image(obj, field, folder):
 
         filename = public_id.split("/")[-1]
 
+        parts = filename.rsplit("_", 1)
+
+        if len(parts) == 2:
+            filename_without_suffix = parts[0]
+        else:
+            filename_without_suffix = filename
+
         extensions = [
             ".jpg",
             ".png",
@@ -42,10 +51,13 @@ def repair_image(obj, field, folder):
 
         local_file = None
 
-        for ext in extensions:
-            path = f"media/{folder}/{filename}{ext}"
-            if os.path.exists(path):
-                local_file = path
+        for name in [filename, filename_without_suffix]:
+            for ext in extensions:
+                path = f"media/{folder}/{name}{ext}"
+                if os.path.exists(path):
+                    local_file = path
+                    break
+            if local_file:
                 break
 
         if local_file:
@@ -87,6 +99,13 @@ for profile in Profile.objects.all():
 
 
 print("\n--- COMMUNITY IMAGES ---")
+
+
+print("\nFiles in media/community:")
+
+
+for f in glob.glob("media/community/*"):
+    print(f)
 
 for community in Community.objects.all():
     repair_image(
